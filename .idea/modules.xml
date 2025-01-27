@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/World_First_Join_Message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/World_First_Join_Message.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/World_First_Join_Message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/World_First_Join_Message.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.test.iml" />
     </modules>
   </component>
 </project>

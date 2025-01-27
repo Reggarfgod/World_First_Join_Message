@@ -1,5 +1,6 @@
 
-[welcome_message]
+#General Settings
+[welcome_Message]
 	#Enable or disable the welcome message
 	enabled = true
 	#The message to be displayed when a player joins the game for the first time
