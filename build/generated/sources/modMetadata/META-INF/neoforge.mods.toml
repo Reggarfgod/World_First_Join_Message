@@ -32,7 +32,7 @@ logoFile="world_first_join_message.png" #optional
 authors = "Reggarf" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
-description = ''''''
+description = '''Fully Configurable World First Join message.'''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 [[mixins]]

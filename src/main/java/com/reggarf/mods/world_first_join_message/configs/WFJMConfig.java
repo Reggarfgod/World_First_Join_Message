@@ -11,7 +11,7 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
 @Config(name = WFJMessage.MOD_ID)
 @Config.Gui.Background("minecraft:textures/block/mossy_cobblestone.png")
-public class ModConfig extends PartitioningSerializer.GlobalData {
+public class WFJMConfig extends PartitioningSerializer.GlobalData {
 
     @ConfigEntry.Category("common")
     @ConfigEntry.Gui.TransitiveObject()

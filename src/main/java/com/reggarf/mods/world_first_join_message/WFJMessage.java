@@ -1,7 +1,7 @@
 package com.reggarf.mods.world_first_join_message;
 
 import com.mojang.logging.LogUtils;
-import com.reggarf.mods.world_first_join_message.configs.ModConfig;
+import com.reggarf.mods.world_first_join_message.configs.WFJMConfig;
 import com.reggarf.mods.world_first_join_message.events.WFJMHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
@@ -18,20 +18,20 @@ import org.slf4j.Logger;
 public class WFJMessage {
     public static final String MOD_ID = "world_first_join_message";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static ModConfig CONFIG;
+    public static WFJMConfig CONFIG;
 
     public WFJMessage(IEventBus modEventBus, ModContainer modContainer) {
         init();
         NeoForge.EVENT_BUS.register(WFJMHandler.class);
         ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (container, parent) -> {
-            return AutoConfig.getConfigScreen(ModConfig.class, parent).get();
+            return AutoConfig.getConfigScreen(WFJMConfig.class, parent).get();
         });
 
     }
 
     public static void init() {
-        AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
-        CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        AutoConfig.register(WFJMConfig.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
+        CONFIG = AutoConfig.getConfigHolder(WFJMConfig.class).getConfig();
 
     }
 
