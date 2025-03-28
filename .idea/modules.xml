@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/World_First_Join_Message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/World_First_Join_Message.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/World_First_Join_Message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/World_First_Join_Message.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.World_First_Join_Message.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/world_first_join_message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/world_first_join_message.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/world_first_join_message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/world_first_join_message.test.iml" />
     </modules>
   </component>
 </project>

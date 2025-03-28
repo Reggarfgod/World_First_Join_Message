@@ -3,7 +3,6 @@ package com.reggarf.mods.world_first_join_message.events;
 
 
 import com.reggarf.mods.world_first_join_message.WFJMessage;
-import com.reggarf.mods.world_first_join_message.configs.ModConfig;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -13,7 +12,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-
+import static net.minecraft.network.chat.TextColor.fromRgb;
 
 
 @Mod.EventBusSubscriber(modid = WFJMessage.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -43,11 +42,12 @@ public class WFJMHandler {
 
     private static Component createClickableMessage() {
         // Parse the RGB colors from configuration
-        String textColorCode = WFJMessage.CONFIG.common.welcomeMessageColor;
-        TextColor textColor = TextColor.parseColor("#" + textColorCode);
+       TextColor textColor = parseTextColor(WFJMessage.CONFIG.common.welcomeMessageColor);
+        TextColor clickableTextColor = parseTextColor(WFJMessage.CONFIG.common.clickableTextColor);
 
-        String clickableColorCode = WFJMessage.CONFIG.common.clickableTextColor;
-        TextColor clickableTextColor = TextColor.parseColor("#" + clickableColorCode);
+         //int color
+         //TextColor textColor = fromRgb(WFJMessage.CONFIG.common.welcomeMessageColor);
+         //TextColor clickableTextColor = fromRgb(WFJMessage.CONFIG.common.clickableTextColor);
 
         return Component.literal(WFJMessage.CONFIG.common.welcomeMessage)
                 .setStyle(Style.EMPTY.withColor(textColor)) // Main message color
@@ -58,5 +58,18 @@ public class WFJMHandler {
                                 .withUnderlined(true)
                                 .withColor(clickableTextColor) // Clickable text color
                         ));
+    }
+
+    private static TextColor parseTextColor(String hex) {
+        try {
+            if (hex.startsWith("#")) {
+                hex = hex.substring(1); // Remove '#' if present
+            }
+            int rgb = Integer.parseInt(hex, 16); // Convert hex to int
+            return fromRgb(rgb);
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid color format: " + hex);
+            return fromRgb(0xFFFFFF); // Default to white if invalid
+        }
     }
 }

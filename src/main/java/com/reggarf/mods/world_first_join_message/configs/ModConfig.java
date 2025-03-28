@@ -36,7 +36,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         @Comment("The RGB color code for the welcome message. " +
                 "Examples: 'FF0000' for red, '00FF00' for green, " +
                 "'0000FF' for blue 'FFFF00' for yellow, 'FF00FF' for magenta, '00FFFF' for cyan")
-        public String welcomeMessageColor = "FFFFFF";
+        public String welcomeMessageColor = "#FFFFFF";
 
         @ConfigEntry.Gui.Tooltip
         @Comment("The URL to be opened when the player clicks the link")
@@ -50,7 +50,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         @Comment("The RGB color code for the clickable text '[Click here]'"+
                 "Examples: 'FF0000' for red, '00FF00' for green, '0000FF' for blue"+
                 "'FFFF00' for yellow, 'FF00FF' for magenta, '00FFFF' for cyan, 'FFFFFF' for white")
-        public String clickableTextColor = "00FFAA";
+        public String clickableTextColor = "#00FFAA";
 
 
 
