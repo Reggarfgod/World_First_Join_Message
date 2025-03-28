@@ -1,4 +1,4 @@
-<p style="text-align: center;"><img src="https://img.shields.io/modrinth/dt/ZtJwBIdt?color=34D058&amp;label=Modrinth%20Downloads&amp;logo=modrinth&amp;logoColor=white"> <img src="https://img.shields.io/curseforge/dt/1150146?color=FC7303&amp;label=CurseForge%20Downloads&amp;logo=curseforge&amp;logoColor=white"> <img src="https://img.shields.io/github/issues/Reggarfgod/World_First_Join_Message?color=6E40C9&amp;label=Issues&amp;logo=github"> <img src="https://img.shields.io/discord/430776550443581450?color=5865F2&amp;label=Online%20Users&amp;logo=discord"></p>
+<p style="text-align: center;"><a href="https://modrinth.com/mod/world-first-join-message" target="_blank" rel="noopener"><img src="https://img.shields.io/modrinth/dt/ZtJwBIdt?color=34D058&amp;label=Modrinth Downloads&amp;logo=modrinth&amp;logoColor=white"></a> <a href="https://www.curseforge.com/minecraft/mc-mods/world-first-join-message" target="_blank" rel="noopener"><img src="https://img.shields.io/curseforge/dt/1150146?color=FC7303&amp;label=CurseForge Downloads&amp;logo=curseforge&amp;logoColor=white"></a> <img src="https://img.shields.io/github/issues/Reggarfgod/World_First_Join_Message?color=6E40C9&amp;label=Issues&amp;logo=github"> <img src="https://img.shields.io/discord/430776550443581450?color=5865F2&amp;label=Online Users&amp;logo=discord"></p>
 <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://media.forgecdn.net/attachments/description/null/description_c49242bd-302f-4e01-9752-6450dd2a7601.png" alt=""></p>
 <p><span style="color: #f1c40f;"><strong>World_First_Join_Message</strong></span> is a lightweight yet powerful Minecraft mod that adds a unique and personalized twist to your server and modpack. With this mod, you can display a custom message whenever a new player joins your world for the very first time. Perfect for creating a welcoming environment on multiplayer servers ,modpack or adding a touch of flair to single-player adventures.<br><br><img src="https://media.forgecdn.net/attachments/description/1150146/description_f7977da6-067b-481c-a8d3-6b96912a562e.png" alt=""></p>
 <h3>Features:</h3>
@@ -15,7 +15,7 @@
 <h4><strong>Install the Mod:</strong></h4>
 <ol>
 <li>
-<p>Download the mod from <a href="https://chatgpt.com/c/67e68992-49b0-8010-bc6f-ee38ed806fd9">CurseForge</a> and place it into the <code>mods</code> folder of your Minecraft directory.</p>
+<p>Download the mod from <a href="https://www.curseforge.com/minecraft/mc-mods/world-first-join-message">CurseForge</a> and place it into the <code>mods</code> folder of your Minecraft directory.</p>
 </li>
 </ol>
 <h4><strong>Launch Minecraft:</strong></h4>
