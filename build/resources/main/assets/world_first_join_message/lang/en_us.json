@@ -1,0 +1,17 @@
+{
+  "text.autoconfig.world_first_join_message.title": "WFJM Config",
+  "text.autoconfig.world_first_join_message.option.common.enabled.@Tooltip": "Enable or disable in-game message",
+  "text.autoconfig.world_first_join_message.option.common.welcomeMessage.@Tooltip": "Welcome Message",
+  "text.autoconfig.world_first_join_message.option.common.welcomeMessageColor.@Tooltip": "Welcome Message Color",
+  "text.autoconfig.world_first_join_message.option.common.clickableUrl.@Tooltip": "URL (link)",
+  "text.autoconfig.world_first_join_message.option.common.clickableTextColor.@Tooltip": "Clickable Text Color",
+  "text.autoconfig.world_first_join_message.option.common.clickhere.@Tooltip": "Clickable Text",
+
+  "text.autoconfig.world_first_join_message.title": "WFJM Config",
+  "text.autoconfig.world_first_join_message.option.common.enabled": "Enable or disable in-game message",
+  "text.autoconfig.world_first_join_message.option.common.welcomeMessage": "Welcome Message",
+  "text.autoconfig.world_first_join_message.option.common.welcomeMessageColor": "Welcome Message Color",
+  "text.autoconfig.world_first_join_message.option.common.clickableUrl": "URL (link)",
+  "text.autoconfig.world_first_join_message.option.common.clickableTextColor": "Clickable Text Color",
+  "text.autoconfig.world_first_join_message.option.common.clickhere": "Clickable Text"
+}
