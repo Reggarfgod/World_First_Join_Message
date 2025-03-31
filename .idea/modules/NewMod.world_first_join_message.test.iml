@@ -13,10 +13,10 @@
     </facet>
   </component>
   <component name="McpModuleSettings">
-    <option name="srgType" value="SRG" />
-  </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <orderEntry type="sourceFolder" forTests="false" />
+    <option name="mappingFile" value="D:\Download\NewMod\build\createMcpToSrg\output.tsrg" />
+    <option name="mcpVersion" value="official_1.21.1" />
+    <option name="minecraftVersion" value="1.21.1" />
+    <option name="platformVersion" value="52.1.0" />
+    <option name="srgType" value="TSRG" />
   </component>
 </module>
