@@ -2,6 +2,7 @@ package com.reggarf.mods.world_first_join_message;
 
 import com.mojang.logging.LogUtils;
 import com.reggarf.mods.world_first_join_message.configs.ModConfig;
+import com.reggarf.mods.world_first_join_message.events.WFJMOnlineMessageHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
@@ -9,7 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -35,14 +37,17 @@ public class WFJMessage {
         IEventBus modEventBus = context.getModEventBus();
 
         // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
+        //modEventBus.addListener(this::commonSetup);
         registerConfig();
         init();
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onLoadComplete);
+        //MinecraftForge.EVENT_BUS.register(new OnlineMessageHandler()); // Register event listener
 
         // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        // modEventBus.addListener(this::addCreative);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 
@@ -61,14 +66,14 @@ public class WFJMessage {
         CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     }
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
 
+    private void setup(final FMLCommonSetupEvent event) {
+        System.out.println("[WorldFirstJoinMessage] Setting up...");
+        WFJMOnlineMessageHandler.initializeMod(); // Call the method to fetch the latest message
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+    private void onLoadComplete(final FMLLoadCompleteEvent event) {
+        System.out.println("[WorldFirstJoinMessage] Load complete!");
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

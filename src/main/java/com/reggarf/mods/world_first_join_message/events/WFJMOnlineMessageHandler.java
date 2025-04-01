@@ -13,22 +13,32 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = WFJMessage.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WFJMOnlineMessageHandler {
-
     private static final String MESSAGE_URL = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/messages.txt"; // Change this to your GitHub URL
+    private static String lastFetchedMessage = null; // Store last fetched message at mod level
+
+    // mod class on startup (feeling bit lazy to create new class)
+    public static void initializeMod() {
+        lastFetchedMessage = WFJMOnlineMessageFetcher.fetchOnlineMessage(MESSAGE_URL);
+        System.out.println("[WorldFirstJoinMessage] Fetched startup message: " + lastFetchedMessage);
+    }
 
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
 
-        // Fetch the latest message from GitHub
+        // Fetch the latest message
         String latestMessage = WFJMOnlineMessageFetcher.fetchOnlineMessage(MESSAGE_URL);
-        if (latestMessage.isEmpty()) return; // If the message fails to load, do nothing
+        if (latestMessage.isEmpty()) return; // If message fails to load, do nothing
 
         // Retrieve stored data from the player
         CompoundTag playerData = player.getPersistentData();
         String lastSeenMessage = playerData.getString("lastSeenMessage");
 
-        // Compare messages character by character
+        // Compare fetched message with both last stored and player's last seen message
+        if (lastFetchedMessage == null || hasMessageChanged(latestMessage, lastFetchedMessage)) {
+            lastFetchedMessage = latestMessage; // Update the stored message on every check
+        }
+
         if (hasMessageChanged(latestMessage, lastSeenMessage)) {
             Component message = createClickableMessage(latestMessage);
             player.sendSystemMessage(message);
@@ -38,24 +48,31 @@ public class WFJMOnlineMessageHandler {
         }
     }
 
-
-    //TODO:future me change method to check new message
-
-    // Method to compare messages character by character
+    // AI-Based Levenshtein Distance to check every character change
     private static boolean hasMessageChanged(String newMessage, String oldMessage) {
-        // Check if lengths are different
-        if (newMessage.length() != oldMessage.length()) {
-            return true; // If lengths are different, the message has changed
-        }
+        if (oldMessage == null || oldMessage.isEmpty()) return true; // Consider changed if no old message exists
 
-        // Check each character individually
-        for (int i = 0; i < newMessage.length(); i++) {
-            if (newMessage.charAt(i) != oldMessage.charAt(i)) {
-                return true; // If any character is different, the message has changed
+        int newLen = newMessage.length();
+        int oldLen = oldMessage.length();
+        int[][] dp = new int[newLen + 1][oldLen + 1];
+
+        for (int i = 0; i <= newLen; i++) {
+            for (int j = 0; j <= oldLen; j++) {
+                if (i == 0) {
+                    dp[i][j] = j;
+                } else if (j == 0) {
+                    dp[i][j] = i;
+                } else {
+                    int cost = (newMessage.charAt(i - 1) == oldMessage.charAt(j - 1)) ? 0 : 1;
+                    dp[i][j] = Math.min(Math.min(
+                                    dp[i - 1][j] + 1,      // Deletion
+                                    dp[i][j - 1] + 1),     // Insertion
+                            dp[i - 1][j - 1] + cost // Substitution
+                    );
+                }
             }
         }
-
-        return false; // No change detected
+        return dp[newLen][oldLen] > 0; // If edit distance is greater than 0, the message has changed
     }
 
     private static Component createClickableMessage(String messageText) {
