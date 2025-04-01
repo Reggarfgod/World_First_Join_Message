@@ -52,7 +52,13 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
                 "'FFFF00' for yellow, 'FF00FF' for magenta, '00FFFF' for cyan, 'FFFFFF' for white")
         public String clickableTextColor = "#00FFAA";
 
+        @ConfigEntry.Gui.Tooltip
+        @Comment("Change this to your GitHub Raw message URL")
+        public String OnlineMessageURL = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/messages.txt";
 
+        @ConfigEntry.Gui.Tooltip
+        @Comment("Change this to your GitHub Raw URL")
+        public String FETCH_URL = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/messages.txt";
 
     }
 

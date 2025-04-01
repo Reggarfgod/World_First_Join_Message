@@ -13,13 +13,17 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = WFJMessage.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WFJMOnlineMessageHandler {
-    private static final String MESSAGE_URL = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/messages.txt"; // Change this to your GitHub URL
+    private static final String MESSAGE_URL = WFJMessage.CONFIG.common.OnlineMessageURL; // Change this to your GitHub URL for the message
+    private static final String URL_FETCH_URL = WFJMessage.CONFIG.common.FETCH_URL; // URL for the clickable URL
     private static String lastFetchedMessage = null; // Store last fetched message at mod level
+    private static String clickableURL = "https://www.curseforge.com/minecraft/mc-mods/world-first-join-message"; // Default URL if fetching fails
 
-    // mod class on startup (feeling bit lazy to create new class)
+    // mod class on startup
     public static void initializeMod() {
         lastFetchedMessage = WFJMOnlineMessageFetcher.fetchOnlineMessage(MESSAGE_URL);
+        clickableURL = fetchClickableURL(URL_FETCH_URL); // Fetch the clickable URL
         System.out.println("[WorldFirstJoinMessage] Fetched startup message: " + lastFetchedMessage);
+        System.out.println("[WorldFirstJoinMessage] Fetched clickable URL: " + clickableURL);
     }
 
     @SubscribeEvent
@@ -84,9 +88,16 @@ public class WFJMOnlineMessageHandler {
                 .append(" ")
                 .append(Component.literal("[Click Here]")
                         .setStyle(Style.EMPTY
-                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://your-link.com"))
+                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, clickableURL)) // Use the fetched URL
                                 .withUnderlined(true)
                                 .withColor(clickableTextColor) // Clickable text color
                         ));
+    }
+
+    // Method to fetch the clickable URL from GitHub or another source
+    private static String fetchClickableURL(String url) {
+        // get the URL from GitHub or a server.
+        String fetchedURL = WFJMOnlineMessageFetcher.fetchOnlineMessage(url); // Fetch the URL content
+        return (fetchedURL != null && !fetchedURL.isEmpty()) ? fetchedURL : clickableURL; // Default to the static URL if fetching fails
     }
 }
