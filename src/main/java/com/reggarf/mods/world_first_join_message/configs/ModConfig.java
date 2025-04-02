@@ -57,9 +57,15 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         public String OnlineMessageURL = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/messages.txt";
 
         @ConfigEntry.Gui.Tooltip
-        @Comment("Change this to your GitHub Raw URL")
-        public String FETCH_URL = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/messages.txt";
+        @Comment("The message to be displayed when a player joins the game for the first time")
+        public String onlineurl = "https://raw.githubusercontent.com/Reggarfgod/World_First_Join_Message/refs/heads/CC/1.21.1/forge/FETCH_URL.txt";
 
+
+//        @ConfigEntry.Gui.Tooltip
+//        @Comment("The RGB color code for the welcome message. " +
+//                "Examples: 'FF0000' for red, '00FF00' for green, " +
+//                "'0000FF' for blue 'FFFF00' for yellow, 'FF00FF' for magenta, '00FFFF' for cyan")
+//        public String OnlineMessageURLcolor = "#FFFFFF";
     }
 
 //    @Config(name = "client")

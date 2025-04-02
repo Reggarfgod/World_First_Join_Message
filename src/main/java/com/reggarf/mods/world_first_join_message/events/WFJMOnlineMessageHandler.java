@@ -14,9 +14,9 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = WFJMessage.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WFJMOnlineMessageHandler {
     private static final String MESSAGE_URL = WFJMessage.CONFIG.common.OnlineMessageURL; // Change this to your GitHub URL for the message
-    private static final String URL_FETCH_URL = WFJMessage.CONFIG.common.FETCH_URL; // URL for the clickable URL
+    private static final String URL_FETCH_URL = WFJMessage.CONFIG.common.onlineurl; // URL for the clickable URL
     private static String lastFetchedMessage = null; // Store last fetched message at mod level
-    private static String clickableURL = "https://www.curseforge.com/minecraft/mc-mods/world-first-join-message"; // Default URL if fetching fails
+    private static String clickableURL = "https://www.youractualurl.com"; // Default URL if fetching fails
 
     // mod class on startup
     public static void initializeMod() {
