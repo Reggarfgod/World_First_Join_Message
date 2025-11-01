@@ -1,1 +1,4 @@
-https://www.curseforge.com/minecraft/mc-mods/world-first-join-message
+CurseForge|https://curseforge.com/minecraft/mc-mods/create-better-villager|#00AAFF|View mod page
+Modrinth|https://modrinth.com/mod/create-better-villager|#00FF88|Download here
+Discord|https://discord.gg/example|#7289DA|Join our community!
+
