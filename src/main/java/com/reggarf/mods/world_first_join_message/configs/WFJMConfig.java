@@ -1,67 +1,37 @@
 package com.reggarf.mods.world_first_join_message.configs;
 
 
-
+import com.reggarf.mods.better_lib.config.annotation.Config;
+import com.reggarf.mods.better_lib.config.annotation.ConfigEntry;
+import com.reggarf.mods.better_lib.config.api.ConfigData;
 import com.reggarf.mods.world_first_join_message.WFJMessage;
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
-import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
-import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
-@Config(name = WFJMessage.MOD_ID)
-@Config.Gui.Background("minecraft:textures/block/mossy_cobblestone.png")
-public class WFJMConfig extends PartitioningSerializer.GlobalData {
+@Config(name = WFJMessage.MOD_ID, background = "minecraft:textures/block/diamond_block.png")
+public class WFJMConfig implements ConfigData {
 
-    @ConfigEntry.Category("common")
-    @ConfigEntry.Gui.TransitiveObject()
-    public Common common = new Common();
-
-//    @ConfigEntry.Category("client")
-//    @ConfigEntry.Gui.TransitiveObject()
-//    public Client client = new Client();
-
-    @Config(name = "common")
-    public static final class Common implements ConfigData {
-
-        @ConfigEntry.Gui.Tooltip
-        @Comment("Enable or disable the welcome message")
+        @ConfigEntry.Category("General Settings")
+        @ConfigEntry.Description("Enable or disable the welcome message")
         public Boolean enabled = true;
 
-        @ConfigEntry.Gui.Tooltip
-        @Comment("The message to be displayed when a player joins the game for the first time")
+        @ConfigEntry.Category("General Settings")
+        @ConfigEntry.Description("The message to be displayed when a player joins the game for the first time")
         public String welcomeMessage = "THANKS TO OUR SPONSORS, ZAP-HOSTING! Support Reggarf And Save BIG - USE CODE Reggarf-1047 FOR 20% OFF Your ORDER!";
 
-        @ConfigEntry.Gui.Tooltip
-        @Comment("The RGB color code for the welcome message. " +
-                "Examples: '#FF0000' for red, '#00FF00' for green, " +
-                "'#0000FF' for blue '#FFFF00' for yellow, '#FF00FF' for magenta, '#00FFFF' for cyan")
-        public String welcomeMessageColor = "#FFFFFF";
+        @ConfigEntry.Category("Chat")
+        @ConfigEntry.Description("The RGB color code for the welcome message.")
+        @ConfigEntry.ColorField
+        public int welcomeMessageColor = 0xFFFFFF;
 
-        @ConfigEntry.Gui.Tooltip
-        @Comment("The URL to be opened when the player clicks the link")
+        @ConfigEntry.Category("General Settings")
+        @ConfigEntry.Description("The URL to be opened when the player clicks the link")
         public String clickableUrl = "https://zap-hosting.com/reggarf";
 
-        @ConfigEntry.Gui.Tooltip
-        @Comment("clickable text")
+        @ConfigEntry.Category("General Settings")
+        @ConfigEntry.Description("clickable text")
         public String clickhere = "[Click here]";
 
-        @ConfigEntry.Gui.Tooltip
-        @Comment("The RGB color code for the clickable text '[Click here]'"+
-                "Examples: '#FF0000' for red, '#00FF00' for green, '#0000FF' for blue"+
-                "'#FFFF00' for yellow, '#FF00FF' for magenta, '#00FFFF' for cyan, '#FFFFFF' for white")
-        public String clickableTextColor = "#00FFAA";
-
-
-
-    }
-
-//    @Config(name = "client")
-//    public static final class Client implements ConfigData {
-//
-//        @ConfigEntry.Gui.Tooltip
-//        @Comment("models")
-//        public boolean showFirstPerson = true;
-//
-//    }
+        @ConfigEntry.Category("Chat")
+        @ConfigEntry.Description("The RGB color code for the clickable text '[Click here]")
+        @ConfigEntry.ColorField
+        public int clickableTextColor = 0x00FFAA;
 }

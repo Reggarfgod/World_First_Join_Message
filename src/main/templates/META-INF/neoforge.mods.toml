@@ -78,9 +78,9 @@ side = "BOTH"
 #[features."${mod_id}"]
 #openGLVersion="[3.2,)"
 [[dependencies."${mod_id}"]]
-modId = "cloth_config"
+modId = "better_lib"
 type = "required"
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[15.0.140,)"
-ordering = "NONE"
+versionRange = "[1.0.104,)"
+ordering = "AFTER"
 side = "BOTH"

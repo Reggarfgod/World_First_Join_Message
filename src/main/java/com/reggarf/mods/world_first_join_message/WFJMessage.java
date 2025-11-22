@@ -1,17 +1,15 @@
 package com.reggarf.mods.world_first_join_message;
 
 import com.mojang.logging.LogUtils;
+import com.reggarf.mods.better_lib.config.core.BetterConfigManager;
+import com.reggarf.mods.better_lib.config.core.BetterConfigScreenFactory;
+import com.reggarf.mods.better_lib.config.gui.ConfigScreenHandler;
+import com.reggarf.mods.world_first_join_message.api.JoinPlugin;
 import com.reggarf.mods.world_first_join_message.configs.WFJMConfig;
-import com.reggarf.mods.world_first_join_message.events.WFJMHandler;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
 @Mod(WFJMessage.MOD_ID)
@@ -21,18 +19,15 @@ public class WFJMessage {
     public static WFJMConfig CONFIG;
 
     public WFJMessage(IEventBus modEventBus, ModContainer modContainer) {
-        init();
-        NeoForge.EVENT_BUS.register(WFJMHandler.class);
-        ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (container, parent) -> {
-            return AutoConfig.getConfigScreen(WFJMConfig.class, parent).get();
+        JoinPlugin.register();
+        CONFIG = BetterConfigManager.register(WFJMConfig.class);
+        modEventBus.addListener(this::onClientSetup);
+    }
+    private void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ConfigScreenHandler.register(MOD_ID, parent ->
+                    BetterConfigScreenFactory.from(WFJMConfig.class, CONFIG, parent)
+            );
         });
-
     }
-
-    public static void init() {
-        AutoConfig.register(WFJMConfig.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
-        CONFIG = AutoConfig.getConfigHolder(WFJMConfig.class).getConfig();
-
-    }
-
 }
