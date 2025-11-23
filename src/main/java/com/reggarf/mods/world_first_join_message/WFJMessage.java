@@ -1,98 +1,45 @@
 package com.reggarf.mods.world_first_join_message;
 
 import com.mojang.logging.LogUtils;
-import com.reggarf.mods.world_first_join_message.configs.ModConfig;
-import com.reggarf.mods.world_first_join_message.events.WFJMOnlineMessageHandler;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
+import com.reggarf.mods.better_lib.config.core.BetterConfigManager;
+import com.reggarf.mods.better_lib.config.core.BetterConfigScreenFactory;
+import com.reggarf.mods.better_lib.config.gui.betterConfigScreenHandler;
+import com.reggarf.mods.world_first_join_message.api.JoinPlugin;
+import com.reggarf.mods.world_first_join_message.configs.WFJMConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.common.MinecraftForge;
-
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(WFJMessage.MOD_ID)
 public class WFJMessage {
 
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "world_first_join_message";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static ModConfig CONFIG;
+    public static WFJMConfig CONFIG;
 
     public WFJMessage(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
-
-        // Register the commonSetup method for modloading
-        //modEventBus.addListener(this::commonSetup);
-        registerConfig();
-        init();
-        // Register ourselves for server and other game events we are interested in
+        JoinPlugin.register();
         MinecraftForge.EVENT_BUS.register(this);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onLoadComplete);
-        //MinecraftForge.EVENT_BUS.register(new OnlineMessageHandler()); // Register event listener
-
-        // Register the item to a creative tab
-        // modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-
-    }
-    private void registerConfig() {
-        ModLoadingContext.get().registerExtensionPoint(
-                ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new ConfigScreenHandler.ConfigScreenFactory(
-                        (client, parent) -> AutoConfig.getConfigScreen(ModConfig.class, parent).get()
-                )
-        );
+        CONFIG = BetterConfigManager.register(WFJMConfig.class);
     }
 
-    public static void init() {
-        AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
-        CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-
-    }
-
-    private void setup(final FMLCommonSetupEvent event) {
-        System.out.println("[WorldFirstJoinMessage] Setting up...");
-        WFJMOnlineMessageHandler.initializeMod(); // Call the method to fetch the latest message
-    }
-
-    private void onLoadComplete(final FMLLoadCompleteEvent event) {
-        System.out.println("[WorldFirstJoinMessage] Load complete!");
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
-
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            event.enqueueWork(() -> betterConfigScreenHandler.register("better_lib",
+                    parent -> BetterConfigScreenFactory.from(WFJMConfig.class, CONFIG, parent)));
+            LOGGER.info("Better_lib: Client setup complete, Minecraft user: {}", Minecraft.getInstance().getUser().getName());
         }
     }
 

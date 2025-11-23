@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NewMod.world_first_join_message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/NewMod.world_first_join_message.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NewMod.world_first_join_message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/NewMod.world_first_join_message.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.world_first_join_message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.world_first_join_message.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.world_first_join_message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.world_first_join_message.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wfjm.world_first_join_message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/wfjm.world_first_join_message.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wfjm.world_first_join_message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/wfjm.world_first_join_message.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/world_first_join_message.main.iml" filepath="$PROJECT_DIR$/.idea/modules/world_first_join_message.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/world_first_join_message.test.iml" filepath="$PROJECT_DIR$/.idea/modules/world_first_join_message.test.iml" />
     </modules>

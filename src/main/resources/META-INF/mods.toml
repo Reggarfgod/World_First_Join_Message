@@ -63,8 +63,8 @@ ordering="NONE"
 side="BOTH"
 
 [[dependencies."${mod_id}"]]
-modId="cloth_config"
+modId="better_lib"
 mandatory=true
-versionRange="[15.0.140,)"
+versionRange="[1.0.107,)"
 ordering="NONE"
 side="BOTH"
