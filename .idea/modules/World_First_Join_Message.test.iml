@@ -14,9 +14,9 @@
   </component>
   <component name="McpModuleSettings">
     <option name="mappingFile" value="E:\MODS\World_First_Join_Message\build\createMcpToSrg\output.tsrg" />
-    <option name="mcpVersion" value="official_1.21.1" />
-    <option name="minecraftVersion" value="1.21.1" />
-    <option name="platformVersion" value="52.1.0" />
+    <option name="mcpVersion" value="official_1.21.6" />
+    <option name="minecraftVersion" value="1.21.6" />
+    <option name="platformVersion" value="56.0.9" />
     <option name="srgType" value="TSRG" />
   </component>
 </module>
