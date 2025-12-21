@@ -47,7 +47,7 @@ repositories {
 
 }
 dependencies {
-    modImplementation "curse.maven:better-library-1150683:7359112"
+    modImplementation "curse.maven:better-library-1150683:7359436"
     modImplementation("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") {
         transitive = false
     }
