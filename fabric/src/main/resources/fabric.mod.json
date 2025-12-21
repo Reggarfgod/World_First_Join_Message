@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/members/reggarf/projects",
+        "sources": "https://github.com/Reggarfgod/World_First_Join_Message",
+        "issues": "https://github.com/Reggarfgod/World_First_Join_Message/issues",
+        "discord": "https://discord.gg/JBFNW3wdTm"
+    },
+    "license": "${license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.reggarf.mods.world_first_join_message.WFJMessage_fabric"
+        ],
+        "modmenu": [
+            "com.reggarf.mods.world_first_join_message.config.ModMenuIntegration"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_version}",
+        "java": ">=${java_version}"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}
+  

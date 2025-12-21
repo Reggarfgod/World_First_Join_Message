@@ -1,0 +1,55 @@
+plugins {
+    id 'multiloader-loader'
+    id 'fabric-loom'
+}
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+}
+
+loom {
+    def aw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
+    if (aw.exists()) {
+        accessWidenerPath.set(aw)
+    }
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+    runs {
+        client {
+            client()
+            setConfigName('Fabric Client')
+            ideConfigGenerated(true)
+            runDir('runs/client')
+        }
+        server {
+            server()
+            setConfigName('Fabric Server')
+            ideConfigGenerated(true)
+            runDir('runs/server')
+        }
+    }
+}
+repositories {
+    maven {
+        url "https://maven.terraformersmc.com/"
+        content {
+            includeGroup "dev.emi"
+            includeGroup "com.terraformersmc"
+        }
+    }
+    maven {url "https://cursemaven.com"}
+
+}
+dependencies {
+    modImplementation "curse.maven:better-library-1150683:7359112"
+    modImplementation("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") {
+        transitive = false
+    }
+    modImplementation "curse.maven:text-placeholder-api-1037459:6131327"
+}
