@@ -14,19 +14,19 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
-@Mod(WFJMessage.MOD_ID)
+@Mod(Constants.MOD_ID)
 public class WFJMessage_neoforge {
 
     public WFJMessage_neoforge(IEventBus eventBus) {
         CommonClass.init();
     }
 
-    @EventBusSubscriber(modid = WFJMessage.MOD_ID, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> BetterConfigScreenHandler.register("better_lib",
-                    parent -> BetterConfigScreenFactory.from(WFJMConfig.class, WFJMessage.CONFIG, parent)));
+                    parent -> BetterConfigScreenFactory.from(WFJMConfig.class, Constants.CONFIG, parent)));
             LOGGER.info("Better_lib: Client setup complete, Minecraft user: {}", Minecraft.getInstance().getUser().getName());
         }
     }

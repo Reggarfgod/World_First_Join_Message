@@ -5,10 +5,10 @@ package com.reggarf.mods.world_first_join_message.configs;
 import com.reggarf.mods.better_lib.config.annotation.Config;
 import com.reggarf.mods.better_lib.config.annotation.ConfigEntry;
 import com.reggarf.mods.better_lib.config.api.ConfigData;
-import com.reggarf.mods.world_first_join_message.WFJMessage;
+import com.reggarf.mods.world_first_join_message.Constants;
 
 
-@Config(modid = WFJMessage.MOD_ID, name = "better_lib_common" , background = "minecraft:textures/block/diamond_block.png")
+@Config(modid = Constants.MOD_ID, name = "world_first_join_message" , background = "minecraft:textures/block/diamond_block.png")
 public class WFJMConfig implements ConfigData {
 
         @ConfigEntry.Category("General Settings")

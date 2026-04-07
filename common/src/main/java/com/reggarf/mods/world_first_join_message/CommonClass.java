@@ -10,6 +10,6 @@ public class CommonClass {
 
     public static void init() {
         JoinPlugin.register();
-        WFJMessage.CONFIG = BetterConfigManager.register(WFJMConfig.class);
+        Constants.CONFIG = BetterConfigManager.register(WFJMConfig.class);
     }
 }

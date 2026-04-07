@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/MultiLoader-Template.forge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/MultiLoader-Template.forge.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/MultiLoader-Template.forge.test.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/MultiLoader-Template.forge.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge/MultiLoader-Template.neoforge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge/MultiLoader-Template.neoforge.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/com.reggarf.mods.MultiLoader-Template.common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/com.reggarf.mods.MultiLoader-Template.common.main.iml" />
     </modules>
   </component>
 </project>
